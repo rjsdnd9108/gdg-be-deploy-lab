@@ -1,0 +1,22 @@
+# ──────────────────────────────────────────────────────────────
+#  정답 Dockerfile — 막혔을 때만 여세요 🙂
+#  (Codespace 워밍업과 진행자 확인용으로도 쓰입니다)
+#
+#  직접 쓸 땐 저장소 맨 위에 "Dockerfile"이라는 이름으로 만드세요.
+# ──────────────────────────────────────────────────────────────
+
+# 1) 조리대: JDK + Gradle로 jar 만들기
+FROM eclipse-temurin:21-jdk AS build
+WORKDIR /workspace
+COPY gradlew settings.gradle build.gradle ./
+COPY gradle gradle
+RUN ./gradlew dependencies --no-daemon
+COPY src src
+RUN ./gradlew bootJar --no-daemon -x test
+
+# 2) 식탁: JRE 위에 jar만 올려 실행
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+COPY --from=build /workspace/build/libs/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]

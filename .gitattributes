@@ -1,0 +1,6 @@
+# Windows에서 받아도 리눅스 컨테이너에서 실행되도록 줄바꿈을 LF로 고정
+* text=auto eol=lf
+gradlew text eol=lf
+*.sh text eol=lf
+*.bat text eol=crlf
+*.jar binary

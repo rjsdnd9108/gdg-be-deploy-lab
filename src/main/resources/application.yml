@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: study-api
+
+server:
+  # 로컬에서는 8080, Render처럼 PORT 환경변수를 주는 곳에서는 그 값으로 뜬다.
+  # (Render는 PORT=10000을 넣어 준다 — 3회차 "환경변수"에서 자세히)
+  port: ${PORT:8080}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health   # /actuator/health 만 연다 (기본값과 같지만 명시)

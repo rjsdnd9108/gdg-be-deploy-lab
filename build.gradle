@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.1.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.gdg'
+version = '0.0.1'
+
+java {
+    toolchain {
+        // 이 앱은 Java 21로 빌드한다. (Codespace 호스트는 일부러 Java 17 — STEP 1 참고)
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'   // /actuator/health
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// 실행 가능한 jar(bootJar) 하나만 만든다.
+// 이걸 끄지 않으면 build/libs/에 -plain.jar까지 생겨서 Dockerfile의 COPY *.jar가 깨진다.
+tasks.named('jar') {
+    enabled = false
+}

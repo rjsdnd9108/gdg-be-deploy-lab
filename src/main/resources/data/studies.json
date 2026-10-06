@@ -1,0 +1,23 @@
+[
+  {
+    "studyId": 1,
+    "title": "Spring Boot 입문 스터디",
+    "content": "백엔드 입문자를 위한 스터디입니다. 주 1회 진행합니다.",
+    "capacity": 6,
+    "status": "RECRUITING"
+  },
+  {
+    "studyId": 2,
+    "title": "알고리즘 주 3회 풀이",
+    "content": "백준 골드 문제를 주 3회 같이 풉니다.",
+    "capacity": 4,
+    "status": "RECRUITING"
+  },
+  {
+    "studyId": 3,
+    "title": "JPA 프로그래밍 완독",
+    "content": "책 한 권을 8주 동안 완독합니다. 모집 마감되었습니다.",
+    "capacity": 5,
+    "status": "CLOSED"
+  }
+]

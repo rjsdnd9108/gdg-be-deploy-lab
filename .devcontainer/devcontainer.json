@@ -1,0 +1,30 @@
+{
+  "name": "GDG BE 2회차 · 배포 실습",
+
+  // 호스트 Java는 일부러 17 — STEP 1에서 "팀원의 jar(Java 21)가 안 도는" 상황을 겪기 위해서
+  "image": "mcr.microsoft.com/devcontainers/java:17-bookworm",
+
+  "features": {
+    // Codespace 안에서 docker build / run / push 를 쓰기 위해
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  // 처음 만들 때 한 번: 베이스 이미지와 Gradle 의존성을 미리 받아 둔다 (첫 빌드 단축)
+  "postCreateCommand": "bash .devcontainer/warmup.sh",
+
+  "forwardPorts": [8080],
+
+  "hostRequirements": {
+    "cpus": 2
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // 오늘의 규칙: AI 없이. (세션이 끝나면 다시 켜도 됩니다)
+        "github.copilot.enable": { "*": false },
+        "chat.disableAIFeatures": true
+      }
+    }
+  }
+}
