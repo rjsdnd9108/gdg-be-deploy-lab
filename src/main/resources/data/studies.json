@@ -19,5 +19,12 @@
     "content": "책 한 권을 8주 동안 완독합니다. 모집 마감되었습니다.",
     "capacity": 5,
     "status": "CLOSED"
+  },
+  {
+    "studyId": 4,
+    "title": "웅건장의 Docker 스터디",
+    "content": "Dockerfile을 직접 써보는 스터디",
+    "capacity": 4,
+    "status": "RECRUITING"
   }
 ]
